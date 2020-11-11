@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.34.0">
+<meta name="crystal_docs.project_version" content="HEAD">
+<meta name="crystal_docs.project_name" content="etcd">
+
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="etcd">
+  <title>Etcd::Api - etcd HEAD</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          etcd
+        </a>
+      </h1>
+
+      <span class="project-version">
+        HEAD
+      </span>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class="parent open current" data-id="etcd/Etcd" data-name="etcd">
+      <a href="../Etcd.html">Etcd</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="etcd/Etcd/Api" data-name="etcd::api">
+      <a href="../Etcd/Api.html">Api</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/ApiError" data-name="etcd::apierror">
+      <a href="../Etcd/ApiError.html">ApiError</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Auth" data-name="etcd::auth">
+      <a href="../Etcd/Auth.html">Auth</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Client" data-name="etcd::client">
+      <a href="../Etcd/Client.html">Client</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Cluster" data-name="etcd::cluster">
+      <a href="../Etcd/Cluster.html">Cluster</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Error" data-name="etcd::error">
+      <a href="../Etcd/Error.html">Error</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Kv" data-name="etcd::kv">
+      <a href="../Etcd/Kv.html">Kv</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Lease" data-name="etcd::lease">
+      <a href="../Etcd/Lease.html">Lease</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Maintenance" data-name="etcd::maintenance">
+      <a href="../Etcd/Maintenance.html">Maintenance</a>
+      
+    </li>
+  
+  <li class="parent " data-id="etcd/Etcd/Model" data-name="etcd::model">
+      <a href="../Etcd/Model.html">Model</a>
+      
+        <ul>
+  
+  <li class=" " data-id="etcd/Etcd/Model/Base64Converter" data-name="etcd::model::base64converter">
+      <a href="../Etcd/Model/Base64Converter.html">Base64Converter</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/DeleteResponse" data-name="etcd::model::deleteresponse">
+      <a href="../Etcd/Model/DeleteResponse.html">DeleteResponse</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/Header" data-name="etcd::model::header">
+      <a href="../Etcd/Model/Header.html">Header</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/Kv" data-name="etcd::model::kv">
+      <a href="../Etcd/Model/Kv.html">Kv</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/PutResponse" data-name="etcd::model::putresponse">
+      <a href="../Etcd/Model/PutResponse.html">PutResponse</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/RangeResponse" data-name="etcd::model::rangeresponse">
+      <a href="../Etcd/Model/RangeResponse.html">RangeResponse</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/Status" data-name="etcd::model::status">
+      <a href="../Etcd/Model/Status.html">Status</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/StringTypeConverter" data-name="etcd::model::stringtypeconverter(t)">
+      <a href="../Etcd/Model/StringTypeConverter.html">StringTypeConverter</a>
+      
+    </li>
+  
+  <li class="parent " data-id="etcd/Etcd/Model/TxnResponse" data-name="etcd::model::txnresponse">
+      <a href="../Etcd/Model/TxnResponse.html">TxnResponse</a>
+      
+        <ul>
+  
+  <li class=" " data-id="etcd/Etcd/Model/TxnResponse/Response" data-name="etcd::model::txnresponse::response">
+      <a href="../Etcd/Model/TxnResponse/Response.html">Response</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/WatchError" data-name="etcd::model::watcherror">
+      <a href="../Etcd/Model/WatchError.html">WatchError</a>
+      
+    </li>
+  
+  <li class="parent " data-id="etcd/Etcd/Model/WatchEvent" data-name="etcd::model::watchevent">
+      <a href="../Etcd/Model/WatchEvent.html">WatchEvent</a>
+      
+        <ul>
+  
+  <li class=" " data-id="etcd/Etcd/Model/WatchEvent/Type" data-name="etcd::model::watchevent::type">
+      <a href="../Etcd/Model/WatchEvent/Type.html">Type</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/WatchResponse" data-name="etcd::model::watchresponse">
+      <a href="../Etcd/Model/WatchResponse.html">WatchResponse</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Model/WatchResult" data-name="etcd::model::watchresult">
+      <a href="../Etcd/Model/WatchResult.html">WatchResult</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Utils" data-name="etcd::utils">
+      <a href="../Etcd/Utils.html">Utils</a>
+      
+    </li>
+  
+  <li class="parent " data-id="etcd/Etcd/Watch" data-name="etcd::watch">
+      <a href="../Etcd/Watch.html">Watch</a>
+      
+        <ul>
+  
+  <li class=" " data-id="etcd/Etcd/Watch/Filter" data-name="etcd::watch::filter">
+      <a href="../Etcd/Watch/Filter.html">Filter</a>
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/Watch/Watcher" data-name="etcd::watch::watcher">
+      <a href="../Etcd/Watch/Watcher.html">Watcher</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="etcd/Etcd/WatchError" data-name="etcd::watcherror">
+      <a href="../Etcd/WatchError.html">WatchError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Etcd::Api
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Etcd/Api.html">Etcd::Api</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L5" target="_blank">
+        etcd/api.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="DEFAULT_HOST">
+        <strong>DEFAULT_HOST</strong> = <code><span class="s">&quot;localhost&quot;</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="DEFAULT_PORT">
+        <strong>DEFAULT_PORT</strong> = <code><span class="n">2379</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="DEFAULT_VERSION">
+        <strong>DEFAULT_VERSION</strong> = <code><span class="s">&quot;v3beta&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>
+    <a id="constructors" class="anchor" href="#constructors">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructors
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new(url:URI,api_version:String?=nil)-class-method" class="signature"><strong>.new</strong>(url : URI, api_version : String? = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#new(host:String=&quot;localhost&quot;,port:Int32?=nil,api_version:String?=nil)-class-method" class="signature"><strong>.new</strong>(host : String = <span class="s">&quot;localhost&quot;</span>, port : Int32? = <span class="n">nil</span>, api_version : String? = <span class="n">nil</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#api_version:String-instance-method" class="signature"><strong>#api_version</strong> : String</a>
+        
+          <div class="summary"><p>API version</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#api_version=(api_version:String)-instance-method" class="signature"><strong>#api_version=</strong>(api_version : String)</a>
+        
+          <div class="summary"><p>API version</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#connection:HTTP::Client-instance-method" class="signature"><strong>#connection</strong> : HTTP::Client</a>
+        
+          <div class="summary"><p>:no_doc: Underlying HTTP connection - exposed for access from test framework only.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#delete</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a DELETE request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(path,body=nil)-instance-method" class="signature"><strong>#delete</strong>(path, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a DELETE request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(path,headers:HTTP::Headers,body=nil)-instance-method" class="signature"><strong>#delete</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a DELETE request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method" class="signature"><strong>#delete</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)</a>
+        
+          <div class="summary"><p>Executes a DELETE request and yields a <code>HTTP::Client::Response</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method" class="signature"><strong>#delete</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a DELETE request on the etcd client connection.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#delete(path,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#delete</strong>(path, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a DELETE request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method" class="signature"><strong>#get</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)</a>
+        
+          <div class="summary"><p>Executes a GET request and yields a <code>HTTP::Client::Response</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(path,headers:HTTP::Headers,body=nil)-instance-method" class="signature"><strong>#get</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a GET request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(path,body=nil)-instance-method" class="signature"><strong>#get</strong>(path, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a GET request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#get</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a GET request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(path,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#get</strong>(path, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a GET request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method" class="signature"><strong>#get</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a GET request on the etcd client connection.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#host:String-instance-method" class="signature"><strong>#host</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#port:Int32-instance-method" class="signature"><strong>#port</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post(path,headers:HTTP::Headers,body=nil)-instance-method" class="signature"><strong>#post</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a POST request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post(path,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#post</strong>(path, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a POST request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#post</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a POST request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post(path,body=nil)-instance-method" class="signature"><strong>#post</strong>(path, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a POST request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method" class="signature"><strong>#post</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)</a>
+        
+          <div class="summary"><p>Executes a POST request and yields a <code>HTTP::Client::Response</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method" class="signature"><strong>#post</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a POST request on the etcd client connection.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method" class="signature"><strong>#put</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)</a>
+        
+          <div class="summary"><p>Executes a PUT request and yields a <code>HTTP::Client::Response</code>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put(path,headers:HTTP::Headers,body=nil)-instance-method" class="signature"><strong>#put</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a PUT request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put(path,body=nil)-instance-method" class="signature"><strong>#put</strong>(path, body = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a PUT request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code>...</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#put</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a PUT request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put(path,body:NamedTuple%7CHash,&)-instance-method" class="signature"><strong>#put</strong>(path, body : NamedTuple | Hash, &)</a>
+        
+          <div class="summary"><p>Executes a PUT request on the etcd client connection with a JSON body formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method" class="signature"><strong>#put</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)</a>
+        
+          <div class="summary"><p>Executes a PUT request on the etcd client connection.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#spawn_connection-instance-method" class="signature"><strong>#spawn_connection</strong></a>
+        
+          <div class="summary"><p><span class="flag orange">TODO</span>  Add connection pooling.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#token:String?-instance-method" class="signature"><strong>#token</strong> : String?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#url:URI?-instance-method" class="signature"><strong>#url</strong> : URI?</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>
+    <a id="constructor-detail" class="anchor" href="#constructor-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Constructor Detail
+  </h2>
+  
+    <div class="entry-detail" id="new(url:URI,api_version:String?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(url : URI, api_version : String? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new(url:URI,api_version:String?=nil)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="new(host:String=&quot;localhost&quot;,port:Int32?=nil,api_version:String?=nil)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(host : String = <span class="s">&quot;localhost&quot;</span>, port : Int32? = <span class="n">nil</span>, api_version : String? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#new(host:String=&quot;localhost&quot;,port:Int32?=nil,api_version:String?=nil)-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="api_version:String-instance-method">
+      <div class="signature">
+        
+        def <strong>api_version</strong> : String
+
+        <a class="method-permalink" href="#api_version:String-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>API version</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="api_version=(api_version:String)-instance-method">
+      <div class="signature">
+        
+        def <strong>api_version=</strong>(api_version : String)
+
+        <a class="method-permalink" href="#api_version=(api_version:String)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>API version</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="connection:HTTP::Client-instance-method">
+      <div class="signature">
+        
+        def <strong>connection</strong> : HTTP::Client
+
+        <a class="method-permalink" href="#connection:HTTP::Client-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>:no_doc:
+Underlying HTTP connection - exposed for access from test framework only.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L8" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,headers:HTTP::Headers,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#delete(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a DELETE request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#delete(path,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a DELETE request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,headers:HTTP::Headers,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#delete(path,headers:HTTP::Headers,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a DELETE request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)
+
+        <a class="method-permalink" href="#delete(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a DELETE request and yields a <code>HTTP::Client::Response</code>.</p>
+
+<p>When working with endpoint that provide stream responses these may be accessed as available
+by calling <code>#body_io</code> on the yielded response object.</p>
+
+<p>The response status will be automatically checked and a etcd::ApiError raised if
+unsuccessful.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#delete(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a DELETE request on the etcd client connection.</p>
+
+<p>The response status will be automatically checked and a Etcd::ApiError raised if
+unsuccessful.</p>
+
+<pre><code></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(path,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#delete(path,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a DELETE request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)
+
+        <a class="method-permalink" href="#get(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a GET request and yields a <code>HTTP::Client::Response</code>.</p>
+
+<p>When working with endpoint that provide stream responses these may be accessed as available
+by calling <code>#body_io</code> on the yielded response object.</p>
+
+<p>The response status will be automatically checked and a etcd::ApiError raised if
+unsuccessful.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path,headers:HTTP::Headers,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#get(path,headers:HTTP::Headers,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a GET request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#get(path,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a GET request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path,headers:HTTP::Headers,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#get(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a GET request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#get(path,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a GET request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#get(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a GET request on the etcd client connection.</p>
+
+<p>The response status will be automatically checked and a Etcd::ApiError raised if
+unsuccessful.</p>
+
+<pre><code></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="host:String-instance-method">
+      <div class="signature">
+        
+        def <strong>host</strong> : String
+
+        <a class="method-permalink" href="#host:String-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="port:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>port</strong> : Int32
+
+        <a class="method-permalink" href="#port:Int32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path,headers:HTTP::Headers,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#post(path,headers:HTTP::Headers,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a POST request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#post(path,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a POST request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path,headers:HTTP::Headers,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#post(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a POST request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#post(path,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a POST request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)
+
+        <a class="method-permalink" href="#post(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a POST request and yields a <code>HTTP::Client::Response</code>.</p>
+
+<p>When working with endpoint that provide stream responses these may be accessed as available
+by calling <code>#body_io</code> on the yielded response object.</p>
+
+<p>The response status will be automatically checked and a etcd::ApiError raised if
+unsuccessful.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#post(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a POST request on the etcd client connection.</p>
+
+<p>The response status will be automatically checked and a Etcd::ApiError raised if
+unsuccessful.</p>
+
+<pre><code></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType = <span class="n">nil</span>, &)
+
+        <a class="method-permalink" href="#put(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType=nil,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a PUT request and yields a <code>HTTP::Client::Response</code>.</p>
+
+<p>When working with endpoint that provide stream responses these may be accessed as available
+by calling <code>#body_io</code> on the yielded response object.</p>
+
+<p>The response status will be automatically checked and a etcd::ApiError raised if
+unsuccessful.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,headers:HTTP::Headers,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, headers : HTTP::Headers, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#put(path,headers:HTTP::Headers,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a PUT request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,body=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, body = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#put(path,body=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a PUT request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code>... or a <code>Hash</code>.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,headers:HTTP::Headers,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, headers : HTTP::Headers, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#put(path,headers:HTTP::Headers,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a PUT request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,body:NamedTuple|Hash,&)-instance-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, body : NamedTuple | Hash, &)
+
+        <a class="method-permalink" href="#put(path,body:NamedTuple%7CHash,&)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a PUT request on the etcd client connection with a JSON body
+formed from the passed <code>NamedTuple</code> and yields streamed response entries to the block.</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, headers : HTTP::Headers? = <span class="n">nil</span>, body : HTTP::Client::BodyType? = <span class="n">nil</span>)
+
+        <a class="method-permalink" href="#put(path,headers:HTTP::Headers?=nil,body:HTTP::Client::BodyType?=nil)-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Executes a PUT request on the etcd client connection.</p>
+
+<p>The response status will be automatically checked and a Etcd::ApiError raised if
+unsuccessful.</p>
+
+<pre><code></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L70" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="spawn_connection-instance-method">
+      <div class="signature">
+        
+        def <strong>spawn_connection</strong>
+
+        <a class="method-permalink" href="#spawn_connection-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><span class="flag orange">TODO</span>  Add connection pooling.
+Currently, there's contention on the http connection
+Better to lease connections from a pool, and use the sclient object
+This way, we can reuse the same infra around the connection</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L44" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="token:String?-instance-method">
+      <div class="signature">
+        
+        def <strong>token</strong> : String?
+
+        <a class="method-permalink" href="#token:String?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L16" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="url:URI?-instance-method">
+      <div class="signature">
+        
+        def <strong>url</strong> : URI?
+
+        <a class="method-permalink" href="#url:URI?-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/place-labs/crystal-etcd/blob/e1f8031dac02bf811a6fce622ccbb64bd4539a02/src/etcd/api.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
