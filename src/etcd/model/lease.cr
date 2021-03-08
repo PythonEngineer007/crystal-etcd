@@ -31,16 +31,8 @@ module Etcd::Model
 
   # Returns error
   struct KeepAlive < Base
-    getter error : KeepAliveError?
+    getter error : Error?
     getter result : KeepAliveResult?
-  end
-
-  struct KeepAliveError < Base
-    getter details : Array(NamedTuple(type_url: String, value: String))
-    getter grpc_code : Int32
-    getter http_code : Int32
-    getter http_status : String
-    getter message : String
   end
 
   struct KeepAliveResult < WithHeader

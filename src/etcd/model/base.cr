@@ -11,6 +11,14 @@ module Etcd::Model
     getter header : Header
   end
 
+  struct Error < Base
+    getter details : Array(NamedTuple(type_url: String, value: String))
+    getter grpc_code : Int32
+    getter http_code : Int32
+    getter http_status : String
+    getter message : String
+  end
+
   struct Header < Base
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(UInt64))]
     getter cluster_id : UInt64?
