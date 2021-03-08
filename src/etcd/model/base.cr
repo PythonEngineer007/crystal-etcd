@@ -7,7 +7,7 @@ module Etcd::Model
     include JSON::Serializable
   end
 
-  struct WithHeader < Base
+  abstract struct WithHeader < Base
     getter header : Header
   end
 
