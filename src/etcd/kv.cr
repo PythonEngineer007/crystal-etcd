@@ -96,6 +96,15 @@ module Etcd
       range(encoded_key, range_end, base64_keys: false)
     end
 
+    def txn(post_body)
+      response = client.api.post("/kv/txn", post_body)
+      Model::TxnResponse.from_json(response.body).succeeded
+    end
+
+    def compaction(physical : Bool, revision : String)
+      client.api.post("/kv/compaction", {:physical => physical, :revision => revision}).success?
+    end
+
     # Non-Standard Requests
     ##############################################################################
 
