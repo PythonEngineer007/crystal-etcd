@@ -3,6 +3,12 @@ require "json"
 # Etcd data models
 # Refer to documentation https://coreos.com/etcd/docs/latest/dev-guide/api_reference_v3.html
 module Etcd::Model
+  struct Enum
+    def to_json(json : JSON::Builder)
+      json.string(value)
+    end
+  end
+
   private abstract struct Base
     include JSON::Serializable
   end

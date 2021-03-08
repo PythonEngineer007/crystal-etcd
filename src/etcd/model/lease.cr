@@ -17,7 +17,7 @@ module Etcd::Model
     getter ttl : Int64
     @[JSON::Field(key: "grantedTTL", converter: Etcd::Model::StringTypeConverter(Int64))]
     getter granted_ttl : Int64
-    getter keys : Array(String)?
+    getter keys : Array(String)? # This should be Array(Bytes)?
   end
 
   # Returns error

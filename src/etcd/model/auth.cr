@@ -9,10 +9,18 @@ module Etcd::Model
     getter perm : Array(PermItem)
   end
 
+  enum PermType
+    READ
+    WRITE
+    READWRITE
+  end
+
   struct PermItem < WithHeader
+    @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Bytes))]
     getter key : String
     @[JSON::Field(key: "permType")]
-    getter perm_type : String # should be READ
+    getter perm_type : PermType
+    @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Bytes))]
     getter range_end : String
   end
 

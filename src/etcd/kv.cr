@@ -101,7 +101,7 @@ module Etcd
       Model::TxnResponse.from_json(response.body).succeeded
     end
 
-    def compaction(physical : Bool, revision : String)
+    def compaction(physical : Bool, revision : Int64)
       client.api.post("/kv/compaction", {:physical => physical, :revision => revision}).success?
     end
 

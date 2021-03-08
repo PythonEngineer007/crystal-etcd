@@ -6,7 +6,7 @@ class Etcd::Maintenance
   def initialize(@client = Etcd::Client.new)
   end
 
-  def alarm(action : String, alarm : String, member_id : UInt64)
+  def alarm(action : Model::AlarmAction, alarm : Model::AlarmType, member_id : UInt64)
     response = client.api.post("/maintenance/alarm", {action: action, alarm: alarm, memberID: member_id}).body
     Model::AlarmArray.from_json(response).alarms
   end
