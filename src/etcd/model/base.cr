@@ -7,6 +7,10 @@ module Etcd::Model
     include JSON::Serializable
   end
 
+  struct WithHeader < Base
+    getter header : Header
+  end
+
   struct Header < Base
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(UInt64))]
     getter cluster_id : UInt64?
