@@ -6,19 +6,23 @@ class Etcd::Lease
   def initialize(@client = Etcd::Client.new)
   end
 
+  # /kv/lease/leases
   # /lease/leases
   # Queries for all existing leases in an etcd cluster
   def leases
     Model::LeasesArray.from_json(client.api.post("/kv/lease/leases").body).leases.map(&.id)
   end
 
+  # /kv/lease/revoke
   # /lease/revoke
   # Revokes an etcd lease
   # id  Id of lease  Int64
   def revoke(id : Int64)
+    # To get header: Etcd::Model::WithHeader.from_json(response.body)
     client.api.post("/kv/lease/revoke", {ID: id}).success?
   end
 
+  # /kv/lease/timetolive
   # /lease/timetolive
   # Queries the TTL of a lease
   # id            id of lease                         Int64
