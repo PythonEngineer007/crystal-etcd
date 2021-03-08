@@ -23,20 +23,17 @@ module Etcd::Model
     getter kvs : Array(Etcd::Model::Kv) = [] of Etcd::Model::Kv
   end
 
-  struct PutResponse < Base
-    getter header : Header
+  struct PutResponse < Withheader
     getter prev_kv : Kv?
   end
 
-  struct DeleteResponse < Base
-    getter header : Header
+  struct DeleteResponse < Withheader
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Int32))]
     getter deleted : Int32 = 0
     getter prev_kvs : Array(Etcd::Model::Kv) = [] of Etcd::Model::Kv
   end
 
-  struct TxnResponse < Base
-    getter header : Header
+  struct TxnResponse < Withheader
     getter succeeded : Bool = false
 
     alias Response = NamedTuple(
