@@ -2,15 +2,15 @@ require "./base"
 
 module Etcd::Model
   struct MemberAdd < WithHeader
-    getter member : MemberItem
-    getter members : Array(MemberItem)
+    getter member : Member
+    getter members : Array(Member)
   end
 
-  struct MemberArray < WithHeader
-    getter members : Array(MemberItem)
+  struct Members < WithHeader
+    getter members : Array(Member)
   end
 
-  struct MemberItem
+  struct Member
     @[JSON::Field(key: "ID", converter: Etcd::Model::StringTypeConverter(UInt64))]
     getter id : UInt64
     @[JSON::Field(key: "clientURLs")]

@@ -37,7 +37,7 @@ class Etcd::Auth
   # auth/role/get
   def role_get(role : String)
     response = client.api.post("/auth/role/get", {role: role}).body
-    Model::PermArray.from_json(response).perm
+    Model::Permissions.from_json(response).perm
   end
 
   # auth/role/grant
@@ -59,7 +59,7 @@ class Etcd::Auth
   # auth/role/list
   def role_list
     response = client.api.post("/auth/role/list").body
-    RoleArray.from_json(response).roles
+    Roles.from_json(response).roles
   end
 
   # auth/role/revoke
@@ -101,7 +101,7 @@ class Etcd::Auth
     validate!(name)
 
     response = client.api.post("/auth/user/get", {name: name}).body
-    Model::RoleArray.from_json(response).roles
+    Model::Roles.from_json(response).roles
   end
 
   # auth/user/grant
@@ -112,7 +112,7 @@ class Etcd::Auth
   # auth/user/list
   def user_list
     response = client.api.post("/auth/user/list").body
-    Model::UserArray.from_json(response).users
+    Model::Users.from_json(response).users
   end
 
   # auth/user/revoke

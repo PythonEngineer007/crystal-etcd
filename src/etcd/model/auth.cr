@@ -5,30 +5,28 @@ module Etcd::Model
     getter token : String
   end
 
-  struct PermArray < WithHeader
-    getter perm : Array(PermItem)
+  struct Permissions < WithHeader
+    getter perm : Array(Permission)
   end
 
-  enum PermType
+  enum PermissionType
     READ
     WRITE
     READWRITE
   end
 
-  struct PermItem < WithHeader
-    @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Bytes))]
-    getter key : String
+  struct Permission < WithHeader
+    getter key : String # Bytes
     @[JSON::Field(key: "permType")]
-    getter perm_type : PermType
-    @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Bytes))]
-    getter range_end : String
+    getter perm_type : PermissionType
+    getter range_end : String # Bytes
   end
 
-  struct RoleArray < WithHeader
+  struct Roles < WithHeader
     getter roles : Array(String)
   end
 
-  struct UserArray < WithHeader
+  struct Users < WithHeader
     getter user : Array(String)
   end
 end

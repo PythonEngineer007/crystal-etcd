@@ -1,11 +1,11 @@
 require "./base"
 
 module Etcd::Model
-  struct LeasesArray < WithHeader
-    getter leases : Array(LeasesItem)
+  struct Leases < WithHeader
+    getter leases : Array(Lease)
   end
 
-  struct LeasesItem < Base
+  struct Lease < Base
     @[JSON::Field(key: "ID", converter: Etcd::Model::StringTypeConverter(Int64))]
     getter id : Int64
   end

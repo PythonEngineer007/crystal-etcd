@@ -2,7 +2,6 @@ require "./base"
 
 module Etcd::Model
   struct Kv < Base
-    # Why are these values nillable
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(UInt64))]
     getter create_revision : UInt64?
     @[JSON::Field(converter: Etcd::Model::Base64Converter)]
@@ -17,32 +16,31 @@ module Etcd::Model
     getter version : Int64?
   end
 
-  struct RangeResponse < Base
+  struct Range < Base
     getter header : Header?
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Int32))]
     getter count : Int32 = 0
     getter kvs : Array(Etcd::Model::Kv) = [] of Etcd::Model::Kv
   end
 
-  struct PutResponse < WithHeader
-    # Why is this nillable
+  struct Put < WithHeader
     getter prev_kv : Kv?
   end
 
-  struct DeleteResponse < WithHeader
+  struct Delete < WithHeader
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Int32))]
     getter deleted : Int32 = 0
     getter prev_kvs : Array(Etcd::Model::Kv) = [] of Etcd::Model::Kv
   end
 
-  struct TxnResponse < WithHeader
-    getter succeeded : Bool = false
+  struct TxnResponse < Base
+    getter response_range : Range?
+    getter response_put : Put?
+    getter response_delete : Delete?
+  end
 
-    alias Response = NamedTuple(
-      response_range: Etcd::Model::RangeResponse?,
-      response_put: Etcd::Model::PutResponse?,
-      response_delete: Etcd::Model::DeleteResponse?,
-    )
-    getter responses : Array(Etcd::Model::TxnResponse::Response) = [] of Etcd::Model::TxnResponse::Response
+  struct Txn < WithHeader
+    getter succeeded : Bool = false
+    getter responses : Array(TxnResponse) = [] of TxnResponse
   end
 end

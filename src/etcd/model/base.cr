@@ -18,11 +18,16 @@ module Etcd::Model
   end
 
   struct Error < Base
-    getter details : Array(NamedTuple(type_url: String, value: String))
+    getter details : Array(ErrorDetail)
     getter grpc_code : Int32
     getter http_code : Int32
     getter http_status : String
     getter message : String
+  end
+
+  struct ErrorDetail < Base
+    getter type_url : String
+    getter value : String # Bytes
   end
 
   struct Header < Base

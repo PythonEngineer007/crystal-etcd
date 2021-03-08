@@ -10,7 +10,7 @@ class Etcd::Lease
   # /lease/leases
   # Queries for all existing leases in an etcd cluster
   def leases
-    Model::LeasesArray.from_json(client.api.post("/kv/lease/leases").body).leases.map(&.id)
+    Model::Leases.from_json(client.api.post("/kv/lease/leases").body).leases.map(&.id)
   end
 
   # /kv/lease/revoke

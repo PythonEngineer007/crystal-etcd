@@ -13,14 +13,14 @@ module Etcd::Model
     CORRUPT
   end
 
-  struct AlarmItem < Base
+  struct Alarm < Base
     getter alarm : AlarmType
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(UInt64))]
     getter member_id : UInt64
   end
 
-  struct AlarmArray < WithHeader
-    getter alarms : Array(AlarmItem)
+  struct Alarms < WithHeader
+    getter alarms : Array(Alarm)
   end
 
   struct Revision < WithHeader
@@ -36,8 +36,7 @@ module Etcd::Model
   end
 
   struct SnapshotResult < WithHeader
-    @[JSON::Field(converter: Etcd::Model::StringTypeConverter(Bytes))]
-    getter blob : Bytes
+    getter blob : String # Bytes
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(UInt64))]
     getter remaining_bytes : UInt64
   end
@@ -48,8 +47,6 @@ module Etcd::Model
     @[JSON::Field(key: "dbSizeInUse", converter: Etcd::Model::StringTypeConverter(Int64))]
     getter db_size_in_use : Int64
     getter errors : Array(String)?
-
-    # Why is this nillable
     @[JSON::Field(key: "isLearner")]
     getter is_learner : Bool?
     @[JSON::Field(converter: Etcd::Model::StringTypeConverter(UInt64))]
