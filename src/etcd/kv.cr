@@ -133,7 +133,7 @@ module Etcd
 
       post_body = {
         :compare => [{
-          :key    => key,
+          :key    => key_d,
           :value  => Base64.strict_encode("0"),
           :target => "VERSION",
           :result => "EQUAL",
