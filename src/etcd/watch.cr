@@ -167,6 +167,8 @@ class Etcd::Watch
           rescue e
             # Ignore timeouts
             unless e.is_a?(IO::Error) && e.message.try(&.includes? "Closed stream")
+              puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
+              puts e.message
               Log.error(exception: e) { "while watching" }
             end
 
