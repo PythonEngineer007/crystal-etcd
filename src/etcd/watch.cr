@@ -118,10 +118,10 @@ class Etcd::Watch
           break if event.nil?
           # Don't forward empty events
           @block.call(event) unless event.empty?
-        when timeout 1.minute
-          # If no events received, trigger a client reconnect as connection may be silently dropped
-          api.connection.close
-        end
+        #when timeout 1.minute
+        #  # If no events received, trigger a client reconnect as connection may be silently dropped
+        #  api.connection.close
+        #end
       end
     end
 
@@ -167,8 +167,6 @@ class Etcd::Watch
           rescue e
             # Ignore timeouts
             unless e.is_a?(IO::Error) && e.message.try(&.includes? "Closed stream")
-              puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
-              puts e.message
               Log.error(exception: e) { "while watching" }
             end
 
