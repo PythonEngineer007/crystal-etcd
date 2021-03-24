@@ -121,7 +121,7 @@ class Etcd::Watch
         #when timeout 1.minute
         #  # If no events received, trigger a client reconnect as connection may be silently dropped
         #  api.connection.close
-        #end
+        end
       end
     end
 
