@@ -137,6 +137,12 @@ module Etcd
           :value  => Base64.strict_encode("0"),
           :target => "VERSION",
           :result => "EQUAL",
+        },
+        {
+          :key    => key_o,
+          :value  => Base64.strict_encode("0"),
+          :target => "VERSION",
+          :result => "EQUAL",
         }],
         :success => [{
           :request_put => {
