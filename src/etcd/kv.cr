@@ -142,7 +142,7 @@ module Etcd
           :key    => key_o,
           :value  => Base64.strict_encode("0"),
           :target => "VERSION",
-          :result => "EQUAL",
+          :result => "NOT_EQUAL",
         }],
         :success => [{
           :request_put => {
