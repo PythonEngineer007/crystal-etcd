@@ -66,7 +66,7 @@ module Etcd
     end
 
     # Queries a range of keys
-    def range(key, range_end : String? = nil, base64_keys : Bool = true)
+    def range(key, range_end : String? = nil, limit : Int64 = 0_i64, base64_keys : Bool = true)
       # Otherwise bypass encoding keys
       if base64_keys
         key = Base64.strict_encode(key)
@@ -76,6 +76,7 @@ module Etcd
       post_body = {
         :key       => key,
         :range_end => range_end,
+        :limit => limit,
       }.compact
       response = client.api.post("/kv/range", post_body)
 
@@ -83,10 +84,10 @@ module Etcd
     end
 
     # Query keys beneath a prefix
-    def range_prefix(prefix)
+    def range_prefix(prefix, limit : Int64 = 0_i64)
       encoded_prefix = Base64.strict_encode(prefix)
       range_end = prefix_range_end encoded_prefix
-      range(encoded_prefix, range_end, base64_keys: false)
+      range(encoded_prefix, range_end, limit, base64_keys: false)
     end
 
     # Query all keys >= key
