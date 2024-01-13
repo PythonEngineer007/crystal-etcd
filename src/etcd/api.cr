@@ -1,11 +1,13 @@
 require "http"
 
+require "./auth"
 require "./error"
 
 class Etcd::Api
   # :no_doc:
   # Underlying HTTP connection - exposed for access from test framework only.
   getter connection : HTTP::Client
+  getter auth : (Etcd::Auth)?
 
   # API version
   property api_version : String
@@ -14,6 +16,8 @@ class Etcd::Api
   getter port : Int32 = DEFAULT_PORT
   getter url : URI?
   getter token : String?
+  getter name : String?
+  getter password : String?
 
   DEFAULT_HOST    = "localhost"
   DEFAULT_PORT    = 2379
@@ -35,6 +39,19 @@ class Etcd::Api
     @api_version = api_version || DEFAULT_VERSION
     port ||= DEFAULT_PORT
     @connection = HTTP::Client.new(host, port)
+  end
+
+  def initialize(
+    host : String = "localhost",
+    port : Int32? = nil,
+    username : String? = nil,
+    password : String? = nil,
+    api_version : String? = nil
+  )
+    @api_version = api_version || DEFAULT_VERSION
+    port ||= DEFAULT_PORT
+    @connection = HTTP::Client.new(host, port)
+    @auth = Etcd::Auth.new(@connection, username, password, @api_version) if username && password
   end
 
   # TODO: Add connection pooling.
@@ -77,6 +94,14 @@ class Etcd::Api
       path = "/#{api_version}#{path}"
 
       {% if method == "post" %}
+        headers = HTTP::Headers{
+          "Content-Type" => "application/json",
+        }
+
+        #if @auth && @auth.token
+        if @auth && @auth.not_nil!.token != nil
+          headers["Authorization"] = @auth.not_nil!.token
+        end
         # Client expects non-empty JSON POST body
         body = "{}" if body.nil?
       {% end %}
@@ -108,6 +133,12 @@ class Etcd::Api
       headers = HTTP::Headers{
         "Content-Type" => "application/json",
       }
+
+      #if @auth && @auth.token
+      if @auth && @auth.not_nil!.token != nil
+        headers["Authorization"] = @auth.not_nil!.token
+      end
+
       body = to_stringly(body) unless body.nil?
       {{method.id}}(path, headers, body.to_json)
     end
@@ -115,6 +146,11 @@ class Etcd::Api
     # :ditto:
     def {{method.id}}(path, headers : HTTP::Headers, body = nil)
       headers["Content-Type"] = "application/json"
+
+      if @auth && @auth.not_nil!.token != nil
+        headers["Authorization"] = @auth.not_nil!.token
+      end
+
       body = to_stringly(body) unless body.nil?
       {{method.id}}(path, headers, body.to_json)
     end
@@ -125,6 +161,11 @@ class Etcd::Api
       headers = HTTP::Headers{
         "Content-Type" => "application/json",
       }
+
+      if @auth && @auth.not_nil!.token != nil
+        headers["Authorization"] = @auth.not_nil!.token
+      end
+
       body = to_stringly(body) unless body.nil?
       {{method.id}}(path, headers, body.to_json) do |response|
         yield response
@@ -134,6 +175,11 @@ class Etcd::Api
     # :ditto:
     def {{method.id}}(path, headers : HTTP::Headers, body : NamedTuple | Hash)
       headers["Content-Type"] = "application/json"
+
+      if @auth && @auth.not_nil!.token != nil
+        headers["Authorization"] = @auth.not_nil!.token
+      end
+
       body = to_stringly(body) unless body.nil?
       {{method.id}}(path, headers, body.to_json) do |response|
         yield response

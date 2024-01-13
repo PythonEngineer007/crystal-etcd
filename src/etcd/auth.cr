@@ -1,12 +1,23 @@
 class Etcd::Auth
-  private getter api : Etcd::Api
+  getter token : String
+  private getter connection : HTTP::Client
 
-  def initialize(@api = Etcd::Api.new)
+  def initialize(@connection = nil, @username : String? = nil, @password : String? = nil, @api_version : String? = "v3beta")
+    @token = authenticate
   end
 
   # auth/authenticate
   def authenticate
-    raise "unimplemented"
+    body = {
+      "name" => @username,
+      "password" => @password,
+    }.to_json
+
+    response = @connection.post("/#{@api_version}/auth/authenticate", headers: nil, body: body)
+    @token = JSON.parse(response.body)["token"].to_s
+  rescue ex
+    raise "authenticate get token error: #{JSON.parse(response.body)}" if response
+    raise "authenticate can't get reponse: #{ex}"
   end
 
   # auth/disable

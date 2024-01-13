@@ -25,6 +25,10 @@ module Etcd
     Etcd::Client.new(host: host, port: port, api_version: api_version)
   end
 
+  def client(host : String, port : Int32? = nil, username : String? = nil, password : String? = nil, api_version : String? = nil)
+    Etcd::Client.new(host: host, port: port, username: username, password: password, api_version: api_version)
+  end
+
   def api(url : URI, api_version : String? = nil)
     Etcd::Api.new(url: url, api_version: api_version)
   end
