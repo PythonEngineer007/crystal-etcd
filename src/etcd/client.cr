@@ -1,4 +1,5 @@
 require "./kv"
+require "./auth"
 require "./lease"
 require "./maintenance"
 require "./watch"
@@ -23,6 +24,17 @@ class Etcd::Client
     api_version : String? = nil
   )
     @create_api = ->{ Etcd::Api.new(host: host, port: port) }
+    @api = @create_api.call
+  end
+
+  def initialize(
+    host : String = "localhost",
+    port : Int32? = nil,
+    username : String? = nil,
+    password : String? = nil,
+    api_version : String? = nil
+  )
+    @create_api = ->{ Etcd::Api.new(host: host, port: port, username: username, password: password) }
     @api = @create_api.call
   end
 
